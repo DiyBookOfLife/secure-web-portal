@@ -7,5 +7,26 @@
     "mongoose": "^9.3.3",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12"
-  }
+  },
+  "name": "secure-web-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiyBookOfLife/secure-web-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/DiyBookOfLife/secure-web-portal/issues"
+  },
+  "homepage": "https://github.com/DiyBookOfLife/secure-web-portal#readme"
 }
