@@ -1,5 +1,5 @@
 import passport from "passport";
-import GitHubStrategy from "passport-github2";
+import { Strategy as GitHubStrategy } from "passport-github2";
 import User from "../models/User.js";
 
 passport.use(
@@ -9,10 +9,14 @@ passport.use(
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
+
+    // VERIFY CALLBACK (runs after GitHub login)
     async (accessToken, refreshToken, profile, done) => {
       try {
+        // 1. check if user already exists
         let user = await User.findOne({ githubId: profile.id });
 
+        // 2. if NOT → create user
         if (!user) {
           user = await User.create({
             email: profile.emails?.[0]?.value,
@@ -20,6 +24,7 @@ passport.use(
           });
         }
 
+        // 3. return user
         return done(null, user);
       } catch (err) {
         return done(err, null);
